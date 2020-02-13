@@ -5,7 +5,6 @@
         <v-list-item-icon>
           <v-icon>mdi-home</v-icon>
         </v-list-item-icon>
-
         <v-list-item-title>Home</v-list-item-title>
       </v-list-item>
       <v-list-group no-action sub-group>
@@ -16,7 +15,7 @@
         </template>
 
         <v-list-item v-for="(plot_design, i) in plot_design" :key="i" link>
-          <router-link v-bind:to="plot_design[1]" >
+          <router-link tag="div" v-bind:to="plot_design[1]">
             <v-list-item-title v-text="plot_design[0]"></v-list-item-title>
           </router-link>
         </v-list-item>
