@@ -1,10 +1,10 @@
 <template>
-  <div>主线剧情设计</div>
+    <div>安保团队设计</div>
 </template>
 
 <script>
 export default {
-  name: 'main_plot'
+  name: 'safeTeam_design'
 }
 </script>
 

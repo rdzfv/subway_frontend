@@ -1,5 +1,5 @@
 <template>
-    <div></div>
+    <div>支线剧情设计</div>
 </template>
 
 <script>

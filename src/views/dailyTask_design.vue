@@ -1,10 +1,10 @@
 <template>
-  <div>主线剧情设计</div>
+    <div>每日任务设计</div>
 </template>
 
 <script>
 export default {
-  name: 'main_plot'
+  name: 'dailyTask_design'
 }
 </script>
 

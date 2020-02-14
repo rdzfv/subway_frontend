@@ -18,6 +18,7 @@
     <v-content>
       <breadcrumbs></breadcrumbs>
       <v-container class="fill-height" fluid>
+        <component :is="activeItem"></component>
       </v-container>
     </v-content>
 
@@ -32,12 +33,43 @@
 import LeftSide from './components/leftSide'
 import Breadcrumbs from './components/breadcrumbs'
 export default {
-  components: { Breadcrumbs, LeftSide },
+  components: {
+    Breadcrumbs,
+    LeftSide,
+    mainPlot: () => import('./views/main_plot.vue'),
+    otherPlot: () => import('./views/other_plot.vue'),
+    buildTeamDesign: () => import('./views/buildTeam_design.vue'),
+    cleanTeamDesign: () => import('./views/cleanTeam_design.vue'),
+    safeTeamDesign: () => import('./views/safeTeam_design.vue'),
+    serveTeamDesign: () => import('./views/serveTeam_design.vue'),
+    dailyTaskDesign: () => import('./views/dailyTask_design.vue'),
+    dessertStoreDesign: () => import('./views/dessertStore_design.vue'),
+    clothStoreDesign: () => import('./views/clothStore_design.vue'),
+    fastfoodStoreDesign: () => import('./views/fastfoodStore_design.vue'),
+    souvenirStoreDesign: () => import('./views/souvenirStore_design.vue')
+  },
   props: {
     source: String
   },
   data: () => ({
-    drawer: null
-  })
+    drawer: null,
+    activeItem: 'mainPlot'
+  }),
+  watch: {
+    $route (to, from) {
+      const path = to.path
+      let route = ''
+      const pathArr = path.toString().split('/')
+      for (let i = 1; i < pathArr.length; i++) {
+        if (pathArr[i] === '') {
+          route = 'mainPlot'
+          continue
+        }
+        route = pathArr[i]
+      }
+      console.log(route)
+      this.activeItem = route
+    }
+  }
 }
 </script>

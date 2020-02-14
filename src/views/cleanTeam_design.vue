@@ -1,10 +1,10 @@
 <template>
-  <div>主线剧情设计</div>
+    <div>清洁团队设计</div>
 </template>
 
 <script>
 export default {
-  name: 'main_plot'
+  name: 'cleanTeam_design'
 }
 </script>
 
