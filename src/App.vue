@@ -17,9 +17,7 @@
     <!--  中间content  -->
     <v-content>
       <breadcrumbs></breadcrumbs>
-      <v-container class="fill-height" fluid>
         <component :is="activeItem"></component>
-      </v-container>
     </v-content>
 
     <!--  底边栏  -->
