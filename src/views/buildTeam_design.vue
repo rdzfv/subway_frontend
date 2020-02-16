@@ -102,6 +102,12 @@
         </form>
       </v-card-subtitle>
     </v-card>
+    <v-alert type="success" style="position: fixed;top:50%;left:50%;" :value="visible">提交成功！</v-alert>
+    <v-alert border="top" colored-border="true" elevation="2" color="#4CAF50" :value="visible2"
+             style="position: fixed;top:50%;left:50%;margin-left: auto;margin-right: auto;width: 300px;">
+      <v-progress-circular indeterminate color="#4CAF50" style="margin-right: 20px"></v-progress-circular>
+      图片上传中...
+    </v-alert>
   </div>
 </template>
 
@@ -109,6 +115,8 @@
 export default {
   name: 'buildTeam_design',
   data: () => ({
+    visible: false,
+    visible2: false,
     level: '1',
     unLockedIn: '1',
     cost: '500',
@@ -165,10 +173,15 @@ export default {
       // // 也可以用RequestParam根据键名去取额外参数
       // param.append('extraParam1', "额外参数1")
       // param.append('extraParam2', "额外参数2")
-      instance.post('http://www.test.com:7003/game2d/vstationteam/updateBuildingTeamTypeInfo',
+      instance.post('http://47.101.146.28:7003/game2d/vstationteam/updateBuildingTeamTypeInfo',
         data,
         { headers: { 'Content-Type': 'multipart/form-data' } }).then(function (data) {
-        console.log(data)
+        if (data.status === 200 && data.data.status === 'success' && data.data.data != null) {
+          that.visible = true
+          setTimeout(function () {
+            that.visible = false
+          }, 2000)
+        }
       }, function (err) {
         console.log('err------: ')
         console.log(err)
@@ -191,10 +204,15 @@ export default {
       // // 也可以用RequestParam根据键名去取额外参数
       // param.append('extraParam1', "额外参数1")
       // param.append('extraParam2', "额外参数2")
-      instance.post('http://www.test.com:7003/game2d/vstationteam/updateBuildingTeamTypeInfo',
+      instance.post('http://47.101.146.28:7003/game2d/vstationteam/updateBuildingTeamTypeInfo',
         data,
         { headers: { 'Content-Type': 'multipart/form-data' } }).then(function (data) {
-        console.log(data)
+        if (data.status === 200 && data.data.status === 'success' && data.data.data != null) {
+          that.visible = true
+          setTimeout(function () {
+            that.visible = false
+          }, 2000)
+        }
       }, function (err) {
         console.log('err------: ')
         console.log(err)
@@ -217,10 +235,15 @@ export default {
       // // 也可以用RequestParam根据键名去取额外参数
       // param.append('extraParam1', "额外参数1")
       // param.append('extraParam2', "额外参数2")
-      instance.post('http://www.test.com:7003/game2d/vstationteam/updateBuildingTeamTypeInfo',
+      instance.post('http://47.101.146.28:7003/game2d/vstationteam/updateBuildingTeamTypeInfo',
         data,
         { headers: { 'Content-Type': 'multipart/form-data' } }).then(function (data) {
-        console.log(data)
+        if (data.status === 200 && data.data.status === 'success' && data.data.data != null) {
+          that.visible = true
+          setTimeout(function () {
+            that.visible = false
+          }, 2000)
+        }
       }, function (err) {
         console.log('err------: ')
         console.log(err)
@@ -228,24 +251,31 @@ export default {
     },
     picUrlChange () {
       const that = this
-      const data = new FormData()
-      data.append('upfile', (that.files1)[0])
-      // const headers = { 'Content-Type': 'multipart/form-data' }
-      const instance = that.$http.create({
-        withCredentials: true
-      })
-      // // 也可以用RequestParam根据键名去取额外参数
-      // param.append('extraParam1', "额外参数1")
-      // param.append('extraParam2', "额外参数2")
-      instance.post('http://www.xuyuyan.cn:7001/trueWorld/upload/uploadFile',
-        data,
-        { headers: { 'Content-Type': 'multipart/form-data' } }).then(function (data) {
-        console.log(data.data.url)
-        that.picUrl = data.data.url
-      }, function (err) {
-        console.log('err------: ')
-        console.log(err)
-      })
+      console.log(that.files1[0])
+      if (that.files1[0]) {
+        that.visible2 = true
+        const data = new FormData()
+        data.append('upfile', (that.files1)[0])
+        // const headers = { 'Content-Type': 'multipart/form-data' }
+        const instance = that.$http.create({
+          withCredentials: true
+        })
+        // // 也可以用RequestParam根据键名去取额外参数
+        // param.append('extraParam1', "额外参数1")
+        // param.append('extraParam2', "额外参数2")
+        instance.post('http://www.xuyuyan.cn:7001/trueWorld/upload/uploadFile',
+          data,
+          { headers: { 'Content-Type': 'multipart/form-data' } }).then(function (data) {
+          console.log(data)
+          if (data.status === 200 && data.data.state === 'SUCCESS') {
+            that.visible2 = false
+          }
+          that.picUrl = data.data.url
+        }, function (err) {
+          console.log('err------: ')
+          console.log(err)
+        })
+      }
     },
     picUrlChange2 () {
       const that = this
