@@ -45,6 +45,19 @@
           </router-link>
         </v-list-item>
       </v-list-group>
+
+      <v-list-group sub-group no-action>
+        <template v-slot:activator>
+          <v-list-item-content>
+            <v-list-item-title>礼物设计</v-list-item-title>
+          </v-list-item-content>
+        </template>
+        <v-list-item v-for="(gift_design, i) in gift_design" :key="i" link>
+          <router-link tag="div" v-bind:to="gift_design[1]">
+            <v-list-item-title v-text="gift_design[0]"></v-list-item-title>
+          </router-link>
+        </v-list-item>
+      </v-list-group>
     </v-list>
   </v-card>
 </template>
@@ -68,6 +81,9 @@ export default {
     ],
     task_design: [
       ['每日任务设计', '/dailyTaskDesign']
+    ],
+    gift_design: [
+      ['种树浇水普通礼物设计', '/waterGiftDesign']
     ]
   })
 }

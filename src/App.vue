@@ -11,7 +11,7 @@
     <!-- 顶边栏 -->
     <v-app-bar app color=#4CAF50 dark>
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
-      <v-toolbar-title>“建设我的地铁站”设计管理平台</v-toolbar-title>
+      <v-toolbar-title>“建设我的地铁线”设计管理平台</v-toolbar-title>
     </v-app-bar>
 
     <!--  中间content  -->
@@ -44,7 +44,8 @@ export default {
     dessertStoreDesign: () => import('./views/dessertStore_design.vue'),
     clothStoreDesign: () => import('./views/clothStore_design.vue'),
     fastfoodStoreDesign: () => import('./views/fastfoodStore_design.vue'),
-    souvenirStoreDesign: () => import('./views/souvenirStore_design.vue')
+    souvenirStoreDesign: () => import('./views/souvenirStore_design.vue'),
+    waterGiftDesign: () => import('./views/waterGift_design.vue')
   },
   props: {
     source: String
