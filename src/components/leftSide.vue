@@ -83,7 +83,8 @@ export default {
       ['每日任务设计', '/dailyTaskDesign']
     ],
     gift_design: [
-      ['种树浇水普通礼物设计', '/waterGiftDesign']
+      ['种树浇水普通礼物设计', '/waterGiftDesign'],
+      ['种树秘籍设计', '/tipDesign']
     ]
   })
 }

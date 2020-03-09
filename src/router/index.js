@@ -11,6 +11,7 @@ import fastfoodStoreDesign from '../views/fastfoodStore_design.vue'
 import souvenirStoreDesign from '../views/souvenirStore_design.vue'
 import dailyTaskDesign from '../views/dailyTask_design.vue'
 import waterGiftDesign from '../views/waterGift_design.vue'
+import tipDesign from '../views/tip_design.vue'
 
 Vue.use(VueRouter)
 
@@ -74,6 +75,11 @@ const routes = [
     path: '/',
     name: 'waterGiftDesign',
     component: waterGiftDesign
+  },
+  {
+    path: '/',
+    name: 'tipDesign',
+    component: tipDesign
   }
 ]
 

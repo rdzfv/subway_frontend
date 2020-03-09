@@ -45,7 +45,8 @@ export default {
     clothStoreDesign: () => import('./views/clothStore_design.vue'),
     fastfoodStoreDesign: () => import('./views/fastfoodStore_design.vue'),
     souvenirStoreDesign: () => import('./views/souvenirStore_design.vue'),
-    waterGiftDesign: () => import('./views/waterGift_design.vue')
+    waterGiftDesign: () => import('./views/waterGift_design.vue'),
+    tipDesign: () => import('./views/tip_design.vue')
   },
   props: {
     source: String
