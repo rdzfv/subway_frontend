@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import mainPlot from '../views/main_plot.vue'
 import otherPlot from '../views/other_plot.vue'
 import buildTeamDesign from '../views/buildTeam_design.vue'
 import cleanTeamDesign from '../views/cleanTeam_design.vue'
@@ -12,18 +11,18 @@ import souvenirStoreDesign from '../views/souvenirStore_design.vue'
 import dailyTaskDesign from '../views/dailyTask_design.vue'
 import waterGiftDesign from '../views/waterGift_design.vue'
 import tipDesign from '../views/tip_design.vue'
+import collectControl from '../components/collect_control.vue'
+import moneyControl from '../components/money_control.vue'
+import peopleControl from '../components/people_control.vue'
+import pointControl from '../components/point_control.vue'
+import questionControl from '../components/question_control.vue'
 
 Vue.use(VueRouter)
 
 const routes = [
   {
     path: '/',
-    name: 'mainPlot',
-    component: mainPlot
-  },
-  {
-    path: '/',
-    name: 'otherPlot',
+    name: 'plot',
     component: otherPlot
   },
   {
@@ -80,6 +79,31 @@ const routes = [
     path: '/',
     name: 'tipDesign',
     component: tipDesign
+  },
+  {
+    path: '/',
+    name: 'collectControl',
+    component: collectControl
+  },
+  {
+    path: '/',
+    name: 'moneyControl',
+    component: moneyControl
+  },
+  {
+    path: '/',
+    name: 'peopleControl',
+    component: peopleControl
+  },
+  {
+    path: '/',
+    name: 'pointControl',
+    component: pointControl
+  },
+  {
+    path: '/',
+    name: 'questionControl',
+    component: questionControl
   }
 ]
 

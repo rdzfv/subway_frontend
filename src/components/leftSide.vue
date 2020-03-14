@@ -10,12 +10,12 @@
       <v-list-group sub-group no-action>
         <template v-slot:activator>
           <v-list-item-content>
-            <v-list-item-title>剧情设计</v-list-item-title>
+            <v-list-item-title>任务设计</v-list-item-title>
           </v-list-item-content>
         </template>
-        <v-list-item v-for="(plot_design, i) in plot_design" :key="i" link>
-          <router-link tag="div" v-bind:to="plot_design[1]">
-            <v-list-item-title v-text="plot_design[0]"></v-list-item-title>
+        <v-list-item v-for="(task_design, i) in task_design" :key="i" link>
+          <router-link tag="div" v-bind:to="task_design[1]">
+            <v-list-item-title v-text="task_design[0]"></v-list-item-title>
           </router-link>
         </v-list-item>
       </v-list-group>
@@ -29,19 +29,6 @@
         <v-list-item v-for="(setting_design, i) in setting_design" :key="i" link>
           <router-link tag="div" v-bind:to="setting_design[1]">
             <v-list-item-title v-text="setting_design[0]"></v-list-item-title>
-          </router-link>
-        </v-list-item>
-      </v-list-group>
-
-      <v-list-group sub-group no-action>
-        <template v-slot:activator>
-          <v-list-item-content>
-            <v-list-item-title>任务设计</v-list-item-title>
-          </v-list-item-content>
-        </template>
-        <v-list-item v-for="(task_design, i) in task_design" :key="i" link>
-          <router-link tag="div" v-bind:to="task_design[1]">
-            <v-list-item-title v-text="task_design[0]"></v-list-item-title>
           </router-link>
         </v-list-item>
       </v-list-group>
@@ -65,9 +52,9 @@
 <script>
 export default {
   data: () => ({
-    plot_design: [
-      ['主线剧情设计', '/mainPlot'],
-      ['支线剧情设计', '/otherPlot']
+    task_design: [
+      ['剧情任务设计', '/otherPlot'],
+      ['每日任务设计', '/dailyTaskDesign']
     ],
     setting_design: [
       ['甜品店设定设计', '/dessertStoreDesign'],
@@ -78,9 +65,6 @@ export default {
       ['清洁团队设定设计', '/cleanTeamDesign'],
       ['服务团队设定设计', '/serveTeamDesign'],
       ['安保团队设定设计', '/safeTeamDesign']
-    ],
-    task_design: [
-      ['每日任务设计', '/dailyTaskDesign']
     ],
     gift_design: [
       ['种树浇水普通礼物设计', '/waterGiftDesign'],

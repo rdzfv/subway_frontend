@@ -34,7 +34,6 @@ export default {
   components: {
     Breadcrumbs,
     LeftSide,
-    mainPlot: () => import('./views/main_plot.vue'),
     otherPlot: () => import('./views/other_plot.vue'),
     buildTeamDesign: () => import('./views/buildTeam_design.vue'),
     cleanTeamDesign: () => import('./views/cleanTeam_design.vue'),
@@ -53,7 +52,7 @@ export default {
   },
   data: () => ({
     drawer: null,
-    activeItem: 'mainPlot'
+    activeItem: 'otherPlot'
   }),
   watch: {
     $route (to, from) {
@@ -62,7 +61,7 @@ export default {
       const pathArr = path.toString().split('/')
       for (let i = 1; i < pathArr.length; i++) {
         if (pathArr[i] === '') {
-          route = 'mainPlot'
+          route = 'otherPlot'
           continue
         }
         route = pathArr[i]
