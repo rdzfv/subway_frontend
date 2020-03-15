@@ -148,6 +148,13 @@ export default {
         .then(function (response) {
           const data = response.data.data
           console.log(data)
+          // 处理detail
+          for (var i = 0; i < data.length; i++) {
+            console.log(data[i].detail)
+            const detailArray = JSON.parse(data[i].detail)
+            data[i].detail = detailArray
+          }
+          console.log(data)
           that.tasks = data
           that.visible3 = false
           that.showApplyBtn = true
@@ -186,16 +193,20 @@ export default {
           console.log(datas)
           task.detail = datas
         }
+        if (that.data.type === 'moneyControl') {
+          console.log(that.data.data)
+          const datas = []
+          for (var k = 0; k < that.data.data.length; k++) {
+            const data = []
+            data.push(that.data.data[k].placeValue)
+            data.push(that.data.data[k].describeValue)
+            data.push(that.data.data[k].numValue)
+            datas.push(data)
+          }
+          console.log(datas)
+          task.detail = datas
+        }
       }
-
-      // this.$http.get('localhost:7003/game2d/plotTask/updateTask
-      //   .then(function (response) {
-      //     const data = response.data.data
-      //     console.log(data)
-      //   })
-      //   .catch(function (err) {
-      //     console.log(err)
-      //   })
       const data = new FormData()
       const json = JSON.stringify(task.detail)
       console.log(json)
@@ -220,19 +231,14 @@ export default {
             that.visible = false
           }, 2000)
           const data = res.data.data
-          const plotDesign = []
+          // 处理detail
           for (var i = 0; i < data.length; i++) {
-            const aPlot = [data[i].name, data[i].id + '']
-            const test = [1, 2]
-            console.log(test[1] + '')
-            plotDesign.push(aPlot)
-            if (data[i].isApplied === 1) {
-              that.used_plot = data[i].id
-              console.log(that.used_plot)
-            }
+            console.log(data[i].detail)
+            const detailArray = JSON.parse(data[i].detail)
+            data[i].detail = detailArray
           }
-          that.plot_design = plotDesign
-          console.log(that.plot_design)
+          console.log(data)
+          that.tasks = data
           that.visible3 = false
         }
         console.log(data)
@@ -251,8 +257,6 @@ export default {
         const plotDesign = []
         for (var i = 0; i < data.length; i++) {
           const aPlot = [data[i].name, data[i].id + '']
-          const test = [1, 2]
-          console.log(test[1] + '')
           plotDesign.push(aPlot)
           if (data[i].isApplied === 1) {
             that.used_plot = data[i].id
