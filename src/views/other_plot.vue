@@ -206,6 +206,10 @@ export default {
           console.log(datas)
           task.detail = datas
         }
+        if (that.data.type === 'questionControl') {
+          console.log(that.data.data)
+          task.detail = that.data.data
+        }
       }
       const data = new FormData()
       const json = JSON.stringify(task.detail)
