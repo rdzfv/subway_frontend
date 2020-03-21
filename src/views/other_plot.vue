@@ -39,7 +39,7 @@
         </v-img>
         <template class="pa-2" style="vertical-align: baseline;margin-right: 16px;">
           <v-file-input show-size counter small-chips multiple label="点击上传替换图片" ref="myfile"
-                        v-model="files1" v-on:change="picUrlChange"></v-file-input>
+                        v-model="files1" v-on:change="picUrlChange(i)"></v-file-input>
         </template>
       </v-row>
       <v-btn class="mr-4" @click="submit(item.id, item.plotId, i)">提交修改</v-btn>
@@ -96,33 +96,32 @@ export default {
       console.log(value)
       this.content = value
     },
-    picUrlChange () {
-      // const that = this
-      // console.log(that.files1[0])
-      // if (that.files1[0]) {
-      //   that.visible2 = true
-      //   const data = new FormData()
-      //   data.append('upfile', (that.files1)[0])
-      //   // const headers = { 'Content-Type': 'multipart/form-data' }
-      //   const instance = that.$http.create({
-      //     withCredentials: true
-      //   })
-      //   // // 也可以用RequestParam根据键名去取额外参数
-      //   // param.append('extraParam1', "额外参数1")
-      //   // param.append('extraParam2', "额外参数2")
-      //   instance.post('http://www.xuyuyan.cn:7001/trueWorld/upload/uploadFile',
-      //     data,
-      //     { headers: { 'Content-Type': 'multipart/form-data' } }).then(function (data) {
-      //     console.log(data)
-      //     if (data.status === 200 && data.data.state === 'SUCCESS') {
-      //       that.visible2 = false
-      //     }
-      //     // that.picUrl = data.data.url
-      //   }, function (err) {
-      //     console.log('err------: ')
-      //     console.log(err)
-      //   })
-      // }
+    picUrlChange (i) {
+      console.log(i)
+      const that = this
+      console.log(that.files1[0])
+      if (that.files1[0]) {
+        that.visible2 = true
+        const data = new FormData()
+        data.append('upfile', (that.files1)[0])
+        const instance = that.$http.create({
+          withCredentials: true
+        })
+        instance.post('http://www.xuyuyan.cn:7001/trueWorld/upload/uploadFile',
+          data,
+          { headers: { 'Content-Type': 'multipart/form-data' } }).then(function (data) {
+          console.log(data)
+          if (data.status === 200 && data.data.state === 'SUCCESS') {
+            that.visible2 = false
+            const tasks = that.tasks
+            tasks[i].picUrl = data.data.url
+            that.tasks = tasks
+          }
+        }, function (err) {
+          console.log('err------: ')
+          console.log(err)
+        })
+      }
     },
     getData (data) {
       console.log(data)
@@ -209,6 +208,15 @@ export default {
         if (that.data.type === 'questionControl') {
           console.log(that.data.data)
           task.detail = that.data.data
+        }
+        if (that.data.type === 'collectControl') {
+          console.log(that.data.data)
+          // eslint-disable-next-line no-inner-declarations
+          function F (num) {
+            this.num = num
+          }
+          const f = new F(that.data.data)
+          task.detail = f
         }
       }
       const data = new FormData()

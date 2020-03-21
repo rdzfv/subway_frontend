@@ -2,6 +2,7 @@
   <div>
     <div style="margin-bottom: 20px;">任务类型：答题控制型</div>
     <div>
+      <v-text-field v-bind:value="num" label="答题数量" @change="changeNum($event)"></v-text-field>
       <v-card color="#ffffff" class="myCard" style="padding: 10px;margin-bottom: 10px;" v-for="(item, i) in questions" :key="i">
         <h3 style="margin-bottom: 10px;">题目 {{i}}</h3>
         <v-text-field v-bind:value="item.content" label="题干" @change="changeQuestion($event, i)"></v-text-field>
@@ -28,6 +29,37 @@ export default {
     default: ''
   },
   methods: {
+    changeNum (value) {
+      console.log(value)
+      // 把修改后的全部数据传递回父组件
+      // 对象法则
+      function Obj (content, options, answer, tips) {
+        this.content = content
+        this.options = options
+        this.answer = answer
+        this.tips = tips
+      }
+      // 构造json
+      const that = this
+      var objs = []
+      const questions = this.detail.questions
+      console.log(questions)
+      for (var j = 0; j < questions.length; j++) {
+        const obj = new Obj(questions[j].content, questions[j].options, that.answers[j], questions[j].tips)
+        objs.push(obj)
+      }
+      function F (num, questions) {
+        this.num = num
+        this.questions = questions
+      }
+      const f = new F(that.num, objs)
+      function Data (objs) {
+        this.type = 'questionControl'
+        this.data = objs
+      }
+      const data = new Data(f)
+      this.$emit('data', data)
+    },
     changeQuestion (value, i) {
       console.log(value)
       console.log(i)
