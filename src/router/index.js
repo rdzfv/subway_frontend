@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import otherPlot from '../views/other_plot.vue'
+import addPlot from '../views/addPlot_design.vue'
 import buildTeamDesign from '../views/buildTeam_design.vue'
 import cleanTeamDesign from '../views/cleanTeam_design.vue'
 import safeTeamDesign from '../views/safeTeam_design.vue'
@@ -104,6 +105,11 @@ const routes = [
     path: '/',
     name: 'questionControl',
     component: questionControl
+  },
+  {
+    path: '/',
+    name: 'addPlot',
+    component: addPlot
   }
 ]
 

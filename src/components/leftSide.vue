@@ -54,6 +54,7 @@ export default {
   data: () => ({
     task_design: [
       ['剧情任务设计', '/otherPlot'],
+      ['剧情任务添加', '/addPlot'],
       ['每日任务设计', '/dailyTaskDesign']
     ],
     setting_design: [

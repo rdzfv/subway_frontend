@@ -35,6 +35,7 @@ export default {
     Breadcrumbs,
     LeftSide,
     otherPlot: () => import('./views/other_plot.vue'),
+    addPlot: () => import('./views/addPlot_design.vue'),
     buildTeamDesign: () => import('./views/buildTeam_design.vue'),
     cleanTeamDesign: () => import('./views/cleanTeam_design.vue'),
     safeTeamDesign: () => import('./views/safeTeam_design.vue'),

@@ -8,7 +8,7 @@
     </v-row>
     <h3>新增：</h3>
     <v-row>
-      <v-select class="pa-4" :items="points" label="地点" solo @change="addPlaces($event)"></v-select>
+      <v-select class="pa-4" :items="places" label="地点" solo @change="addPlaces($event)"></v-select>
       <v-select class="pa-4" :items="describes" label="操作" solo @change="addDescribes($event)"></v-select>
       <v-select class="pa-4" :items="nums" label="数值" solo @change="addNums($event)"></v-select>
       <!--        <v-btn class="pa-4" @click="add()" style="margin-left: 50px;margin-top: 20px;">添加条件</v-btn>-->
@@ -50,8 +50,13 @@ export default {
     add () {
       const newObj = [this.placeValue, this.describeValue, this.numValue]
       console.log(newObj)
-      const detail = this.detail
+      let detail = this.detail
+      console.log(detail)
+      if (detail === '' || detail === undefined || detail === null) {
+        detail = []
+      }
       detail.push(newObj)
+      this.detail = detail
       // emit到父组件
       // 对象法则
       function Obj (placeValue, describeValue, numValue) {

@@ -37,7 +37,11 @@ export default {
     const that = this
     console.log(that.detail)
     console.log(that.detail.num)
-    this.num = that.detail.num
+    if (that.detail.num === undefined) {
+      this.num = 0
+    } else {
+      this.num = that.detail.num
+    }
   }
 }
 </script>

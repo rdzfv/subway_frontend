@@ -50,8 +50,9 @@ export default {
     add () {
       const newObj = [this.pointValue, this.describeValue, this.numValue]
       console.log(newObj)
-      const detail = this.detail
+      let detail = this.detail
       detail.push(newObj)
+      this.detail = detail
       // emit到父组件
       // 对象法则
       function Obj (pointValue, describeValue, numValue) {
@@ -61,6 +62,9 @@ export default {
       }
       // 构造json
       var objs = []
+      if (detail === undefined || detail === null || detail === '') {
+        detail = []
+      }
       for (var j = 0; j < detail.length; j++) {
         const obj = new Obj(detail[j][0], detail[j][1], detail[j][2])
         objs.push(obj)
